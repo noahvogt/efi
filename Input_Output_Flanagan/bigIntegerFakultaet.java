@@ -1,6 +1,7 @@
 import javax.swing.JOptionPane;
 import java.util.Arrays;
 import flanagan.io.Db;
+import java.math.BigInteger;
 
 /**
  * Das Program liest eine ganze Zahl N (0 <= N <= 20) und
@@ -10,7 +11,7 @@ import flanagan.io.Db;
  * @author Victor Yakhontov
  * @version Version vom 29.11.12
  */
-public class Fakultaet
+public class bigIntegerFakultaet
 {
     public static void main(String [] args)
     {
@@ -70,19 +71,31 @@ public class Fakultaet
 
         System.out.format("\n%s \t n! \n-------------------------------------", " n", N);
 
-        int res = 1, resn = 1; // Deklaration von 2 Variablen vom je Datentyp int
+        //int res = 1, resn = 1; // Deklaration von 2 Variablen vom je Datentyp int
 
         /* Initialisierung  der Variablen res und resn 
          * Diese sind erforderlich fuer die Schleife ueber n = 1, 2, ... N
          */
 
         // Schleife ueber n = 1, 2, 3, ... N 
+        
+        // use big integer
+        BigInteger bigN = BigInteger.valueOf(N);
+        bigN.add(BigInteger.ONE);
+        bigN = bigN.add(BigInteger.ONE);
+        System.out.println(bigN);
+        BigInteger res = BigInteger.valueOf(1);
+        BigInteger resn = BigInteger.valueOf(1);
 
-        for (int n = 1; n <= N; n++)    // FOR-Schleife ueber die Variable n = 1,2, ... , N
+        for (BigInteger n = BigInteger.valueOf(1); n.compareTo(bigN) < 0; n = n.add(BigInteger.ONE))    // FOR-Schleife ueber die Variable n = 1,2, ... , N
         {
-            res = n*resn; // n! = n*(n - 1)! = laufender n-Wert mal "resn"
-            resn = res;    //  neuer resn = n!
+            res = n.multiply(bigN); // current result
+            resn = res; // new overall result
             System.out.format("\n %2d \t %-20d", n, res);
+            //System.out.println(n);
+            //res = n*resn; // n! = n*(n - 1)! = laufender n-Wert mal "resn"
+            //resn = res;    //  neuer resn = n!
+            //System.out.format("\n %2d \t %-20d", n, res);
         }
 
         System.out.format("\n-------------------------------------");
