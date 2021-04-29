@@ -7,25 +7,20 @@ import java.math.BigInteger;
  * Das Program liest eine ganze Zahl N (0 <= N <= 20) und
  * berechnet den Wert von N! = 1 * 2 * ... * (N - 1) * N, wobei
  * 0! = 1 (nach Definition)
- * 
- * @author Victor Yakhontov
- * @version Version vom 29.11.12
  */
 public class bigIntegerFakultaet
 {
     public static void main(String [] args)
     {
-        int N = 0; // Deklaration von N - Variablen vom je Datentyp int
+        int N = 0;
 
         /* Bedeutung: 
-         * N = die gesuchte Fakultaet (0 <= N <= 20)
+         * N = die gesuchte Fakultaet
          * n = laufende Fakultaet-Zahl
          * resn = leufende Fakultaet: resn = (n - 1)!, n = 0, 1, 2, ... N
          * res = Resultat: res = n! = n*(n - 1)!, n = 0, 1, 2, ... N
          *     = n* resn 
          */
-
-        // Nun wird es gecheckt, ob die Anzahl der Input-Parameter >= 2
 
         boolean valid = false;
 
@@ -36,24 +31,21 @@ public class bigIntegerFakultaet
             System.exit(1);
         }
 
-        // Es wird nun gecheckt, ob der Input-Parameter die folgenden
-        //  Bedingungen erfuellen: N >= 0 und N <= 20
+        //  validate that: N >= 0
 
-        if ( N < 0 )
-        {
+        if ( N < 0 ) {
                 Db.show(
                 "Falsche Eingabe: der Input-Parameter N < 0 \n"+
                 "Probieren Sie nochmals! Das Programm ist sofort beendet!");
-
             System.exit(1);
         }
 
-        // An dieser Stelle gilt: 0 <= N <= 20
+        // validation prompt
 
         Db.show(
             "Die Eingabe ist OK! Sie möchten also " + N + "! berechnen!");
 
-        // Spezialfall: 0! = 1
+        // special case: 0! = 1
 
         if (N == 0) {
             System.out.println("Fakultaet  " + N + "! = " + 1);
@@ -62,12 +54,7 @@ public class bigIntegerFakultaet
 
         System.out.format("\n%s \t n! \n-------------------------------------", " n", N);
 
-        /* Initialisierung  der Variablen res und resn 
-         * Diese sind erforderlich fuer die Schleife ueber n = 1, 2, ... N
-         */
 
-        // Schleife ueber n = 1, 2, 3, ... N 
-        
         // use big integer
         BigInteger bigN = BigInteger.valueOf(N);
         bigN.add(BigInteger.ONE);
@@ -76,7 +63,7 @@ public class bigIntegerFakultaet
         BigInteger res = BigInteger.valueOf(1);
         BigInteger resn = BigInteger.valueOf(1);
 
-        for (BigInteger n = BigInteger.valueOf(1); n.compareTo(bigN) < 0; n = n.add(BigInteger.ONE))    // FOR-Schleife ueber die Variable n = 1,2, ... , N
+        for (BigInteger n = BigInteger.valueOf(1); n.compareTo(bigN) < 0; n = n.add(BigInteger.ONE))
         {
             res = n.multiply(resn); // current result
             resn = res; // new overall result
@@ -84,6 +71,8 @@ public class bigIntegerFakultaet
         }
 
         System.out.format("\n-------------------------------------");
+
+        // solution prompt
 
         JOptionPane.showMessageDialog (null,
             N + "! = " + res,

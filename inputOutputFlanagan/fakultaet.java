@@ -6,15 +6,12 @@ import flanagan.io.Db;
  * Das Program liest eine ganze Zahl N (0 <= N <= 20) und
  * berechnet den Wert von N! = 1 * 2 * ... * (N - 1) * N, wobei
  * 0! = 1 (nach Definition)
- * 
- * @author Victor Yakhontov
- * @version Version vom 29.11.12
  */
 public class fakultaet
 {
     public static void main(String [] args)
     {
-        int N = 0; // Deklaration von N - Variablen vom je Datentyp int
+        int N = 0;
 
         /* Bedeutung: 
          * N = die gesuchte Fakultaet (0 <= N <= 20)
@@ -23,8 +20,6 @@ public class fakultaet
          * res = Resultat: res = n! = n*(n - 1)!, n = 0, 1, 2, ... N
          *     = n* resn 
          */
-
-        // Nun wird es gecheckt, ob die Anzahl der Input-Parameter >= 2
 
         boolean valid = false;
 
@@ -35,33 +30,26 @@ public class fakultaet
             System.exit(1);
         }
 
-        // Es wird nun gecheckt, ob der Input-Parameter die folgenden
-        //  Bedingungen erfuellen: N >= 0 und N <= 20
+        //  validate that: N >= 0 und N <= 20
 
-        if ( N < 0 )
-        {
+        if ( N < 0 ) {
                 Db.show(
                 "Falsche Eingabe: der Input-Parameter N < 0 \n"+
                 "Probieren Sie nochmals! Das Programm ist sofort beendet!");
-
             System.exit(1);
-        }
-
-        else if ( N >= 21 )
-        {
+        } else if ( N >= 21 ) {
                 Db.show(
                 "Falsche Eingabe: der Input-Parameter N > 20 \n"+
                 "Probieren Sie nochmals! Das Programm ist sofort beendet!");
-
             System.exit(1);
         }
 
-        // An dieser Stelle gilt: 0 <= N <= 20
+        // validation prompt
 
         Db.show(
             "Die Eingabe ist OK! Sie möchten also " + N + "! berechnen!");
 
-        // Spezialfall: 0! = 1
+        // special case: 0! = 1
 
         if (N == 0) {
             System.out.println("Fakultaet  " + N + "! = " + 1);
@@ -70,13 +58,9 @@ public class fakultaet
 
         System.out.format("\n%s \t n! \n-------------------------------------", " n", N);
 
-        int res = 1, resn = 1; // Deklaration von 2 Variablen vom je Datentyp int
+        int res = 1, resn = 1;
 
-        /* Initialisierung  der Variablen res und resn 
-         * Diese sind erforderlich fuer die Schleife ueber n = 1, 2, ... N
-         */
-
-        // Schleife ueber n = 1, 2, 3, ... N 
+        // loop over n = 1, 2, 3, ... N
 
         for (int n = 1; n <= N; n++)    // FOR-Schleife ueber die Variable n = 1,2, ... , N
         {
@@ -85,7 +69,9 @@ public class fakultaet
             System.out.format("\n %2d \t %-20d", n, res);
         }
 
-        System.out.format("\n-------------------------------------");
+        System.out.format("\n-------------------------------------\n");
+
+        // solution prompt
 
         JOptionPane.showMessageDialog (null,
             N + "! = " + res,
