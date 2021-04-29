@@ -1,0 +1,20 @@
+#!/bin/sh
+
+# setup JAVACLASS path for using the flanagan library
+
+# quit before potential errors
+if [ ! -f "$PWD/lib/flanagan.jar" ];then
+    echo "Error: Please put your 'flanagan.jar' in ./lib/flanagan.jar" 1>&2
+    exit 1
+fi
+if ! command -v "xclip" > /dev/null 2>&1; then
+    echo "Error: $prog is not found" 1>&2
+    exit 1
+fi
+if ! echo "${PWD##*/}" | grep -q "^inputOutputFlanagan"; then
+    echo "Error: Please execute this file in the 'inputOutputFlanagan' directory" 1>&2
+    exit 1
+fi
+
+echo "export CLASSPATH=\":$PWD/libs/flanagan.jar:\"" | xclip -sel clip
+echo "now paste in your system clipboard"
