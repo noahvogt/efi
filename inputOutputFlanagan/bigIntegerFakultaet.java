@@ -48,15 +48,6 @@ public class bigIntegerFakultaet
             System.exit(1);
         }
 
-        else if ( N >= 21 )
-        {
-                Db.show(
-                "Falsche Eingabe: der Input-Parameter N > 20 \n"+
-                "Probieren Sie nochmals! Das Programm ist sofort beendet!");
-
-            System.exit(1);
-        }
-
         // An dieser Stelle gilt: 0 <= N <= 20
 
         Db.show(
@@ -70,8 +61,6 @@ public class bigIntegerFakultaet
         }
 
         System.out.format("\n%s \t n! \n-------------------------------------", " n", N);
-
-        //int res = 1, resn = 1; // Deklaration von 2 Variablen vom je Datentyp int
 
         /* Initialisierung  der Variablen res und resn 
          * Diese sind erforderlich fuer die Schleife ueber n = 1, 2, ... N
@@ -89,13 +78,9 @@ public class bigIntegerFakultaet
 
         for (BigInteger n = BigInteger.valueOf(1); n.compareTo(bigN) < 0; n = n.add(BigInteger.ONE))    // FOR-Schleife ueber die Variable n = 1,2, ... , N
         {
-            res = n.multiply(bigN); // current result
+            res = n.multiply(resn); // current result
             resn = res; // new overall result
             System.out.format("\n %2d \t %-20d", n, res);
-            //System.out.println(n);
-            //res = n*resn; // n! = n*(n - 1)! = laufender n-Wert mal "resn"
-            //resn = res;    //  neuer resn = n!
-            //System.out.format("\n %2d \t %-20d", n, res);
         }
 
         System.out.format("\n-------------------------------------");
