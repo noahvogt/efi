@@ -14,10 +14,17 @@ public class bigIntegerFakultaet {
         // get factorial input
         try {
             factorial = Db.readInt("factorial = ");
+            System.out.println("factorial input = " + factorial);
         } catch (NumberFormatException e) {
             Db.show("Error: no valid integer input provided");
             System.exit(1);
         }
+
+        // print dashes
+        for (int i = 0; i < 80; i++) {
+            System.out.format("-");
+        }
+        System.out.println();
 
         //  validate that: factorial >= 0
         if (factorial < 0) {
@@ -26,7 +33,13 @@ public class bigIntegerFakultaet {
         }
 
         // print top table row
-        System.out.format("n \tn!\n\n");
+        System.out.format("n \tn!\n");
+
+        // print dashes
+        for (int i = 0; i < 80; i++) {
+            System.out.format("-");
+        }
+        System.out.println();
 
         // special case: 0! = 1
         if (factorial == 0) {
@@ -37,11 +50,19 @@ public class bigIntegerFakultaet {
         // use big integer
         BigInteger bigFactorial = BigInteger.valueOf(factorial);
 
-        for (BigInteger n = BigInteger.valueOf(1); n.compareTo(bigFactorial) <= 0; n = n.add(BigInteger.ONE))
-        {
+        for (BigInteger n = BigInteger.valueOf(1); n.compareTo(bigFactorial) <= 0; n = n.add(BigInteger.ONE)) {
             res = n.multiply(resn); // current result
             resn = res; // new overall result
             System.out.format("%d \t%d (%d-digit)\n", n, res, res.toString().length());
         }
+
+        // print dashes
+        for (int i = 0; i < 80; i++) {
+            System.out.format("-");
+        }
+        System.out.println();
+
+        System.out.println("Successfully executed the task ...");
+        System.exit(0);
     }
 }
