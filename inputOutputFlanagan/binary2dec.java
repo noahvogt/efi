@@ -8,12 +8,12 @@ public class binary2dec{
         KeyboardInput kb = new KeyboardInput();
         String binaryNumber = kb.readLine("binary number =");
 
-        int currentNumber, sum = 0;
+        BigInteger currentNumber, sum = BigInteger.ZERO;
 
         for (int i = 0; i < binaryNumber.length(); i++) {
-            currentNumber = Integer.parseInt(binaryNumber.substring(i,i + 1));
-            if (currentNumber == 1) {
-                sum += Math.pow(2, binaryNumber.length() - i - 1);
+            currentNumber = BigInteger.valueOf(Integer.parseInt(binaryNumber.substring(i,i + 1)));
+            if (currentNumber.compareTo(BigInteger.ONE) == 0) {
+                sum = sum.add(BigInteger.TWO.pow(binaryNumber.length() - i - 1));
             }
         }
 

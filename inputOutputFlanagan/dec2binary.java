@@ -5,27 +5,34 @@ import java.lang.Math;
 public class dec2binary {
     public static void main(String arg[]) {
         KeyboardInput kb = new KeyboardInput();
-        int decimalNumber = kb.readInt("decimal number =");
+        BigInteger decimalNumber = kb.readBigInteger("decimal number =");
 
-        int currentNumber, sum = 0, cur = 0, i = 0;
+        int i = 0;
+        String binary = "";
+
+        /* special case when input = 0 */
+        if (decimalNumber.compareTo(BigInteger.ZERO) == 0) {
+            System.out.println(0);
+            System.exit(0);
+        }
 
         while (true) {
-            if (decimalNumber - Math.pow(2,i) < 0) {
+            if (decimalNumber.subtract(BigInteger.TWO.pow(i)).compareTo(BigInteger.ZERO) < 0) {
                 break;
             }
             i++;
         }
 
-        String binary = "";
         for (int j = i - 1; j >= 0; j--) {
-            if (decimalNumber - Math.pow(2,j) < 0) {
+            if (decimalNumber.subtract(BigInteger.TWO.pow(j)).compareTo(BigInteger.ZERO) < 0) {
                 binary += "0";
             } else {
                 binary += "1";
-                decimalNumber -= Math.pow(2,j);
+                decimalNumber = decimalNumber.subtract(BigInteger.TWO.pow(j));
             }
         }
         
         System.out.println(binary);
+        System.exit(0);
     }
 }
