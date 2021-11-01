@@ -2,12 +2,12 @@ import flanagan.io.KeyboardInput;
 import java.math.BigInteger;
 import java.lang.Math;
 
-public class dec {
+public class dec2binary {
     public static void main(String arg[]) {
         KeyboardInput kb = new KeyboardInput();
         int decimalNumber = kb.readInt("decimal number =");
 
-        int currentNumber, sum = 0, cur = 0; i = 0;
+        int currentNumber, sum = 0, cur = 0, i = 0;
 
         while (true) {
             if (decimalNumber - Math.pow(2,i) < 0) {
