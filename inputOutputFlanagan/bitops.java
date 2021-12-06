@@ -38,8 +38,12 @@ public class bitops {
         System.out.println("250 >>> 3 = " + Integer.toString(250 >>> 3, 2));
         /* <<< doesn't work with int ??? */
         System.out.println("-3000 <<< 4 = " + Integer.toString(-3000 << 4, 2));
-        System.out.println("~450" + Integer.toString(~450, 2));
-        System.out.println("80 & 190" + Integer.toString(80 & 190, 2));
-        System.out.println("100|(-390)" + Integer.toString(100 | (-390), 2));
+        System.out.println("~450 = " + Integer.toString(~450, 2));
+        System.out.println("80 & 190 = " + Integer.toString(80 & 190, 2));
+        System.out.println("100|(-390) = " + Integer.toString(100 | (-390), 2));
+        System.out.println("(-1350)^(-4990) = " + Integer.toString((-1350) ^(-4990),2));
+        System.out.println("(3000 & ~(-10 << 4)) | (1<<4) = " + Integer.toString((3000 & ~(-10 << 4)) | (1 << 4),2));
+        System.out.println("(-3000 & ~(50 >> 2)) | (-10<<4) = " + Integer.toString((-3000 & ~(50 >> 2)) | (-10 << 4),2));
+        System.out.println("(~300 & ~(20 << 4)) | (100 >> 4) = " + Integer.toString((~300 & ~(20 << 2)) | (100 >> 4),2));
     }
 }
