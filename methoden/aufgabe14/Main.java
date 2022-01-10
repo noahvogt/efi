@@ -1,8 +1,8 @@
 public class Main {
     static double a;
     static double b;
-    static double multiply(double a, double b) {
-        return a * b;
+    static void multiply() {
+        System.out.println(a * b);
     }
 
     public static void main(String[] args) {
@@ -17,6 +17,6 @@ public class Main {
             System.out.println("Error, please enter two doubles as arguments");
             System.exit(1);
         }
-        System.out.println(multiply(a, b));
+        multiply();
     }
 }
