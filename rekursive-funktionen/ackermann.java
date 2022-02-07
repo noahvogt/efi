@@ -4,11 +4,11 @@ import java.util.Calendar;
 
 
 public class ackermann {
-    static int calls = 0;
+    public static int calls = 0;
 
     public static long calcAckermann(long n, long m, Calendar calendar,
                                      Date date, long timediff) {
-        calls = calls++;
+        ackermann.calls = ackermann.calls + 1;
 
         Calendar newCalendar = Calendar.getInstance();
         Date NewTime = newCalendar.getTime();
@@ -21,7 +21,7 @@ public class ackermann {
             seconds = "0";
             milis = timeString;
         }
-        System.out.println("Aufruf " + calls + " mit: n = " + n + " , m = " + m +
+        System.out.println("Aufruf " + ackermann.calls + " mit: n = " + n + " , m = " + m +
                            ", timediff: " + seconds + "." + milis + " s");
         if (n == 0)
             return m + 1;
