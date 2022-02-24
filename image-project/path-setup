@@ -1,0 +1,20 @@
+#!/bin/bash
+
+# setup JAVACLASS path for using the flanagan library
+
+# quit before potential errors
+if [ ! -f "$PWD/lib/flanagan.jar" ]; then
+    echo "Error: Please put your 'flanagan.jar' in ./lib/flanagan.jar" 1>&2
+    exit 1
+fi
+if [ ! -f "$PWD/lib/stdlib.jar" ]; then
+    echo "Error: Please put your 'stdlib.jar' in ./lib/stdlib.jar" 1>&2
+    exit 1
+fi
+if ! echo "${PWD##*/}" | grep -q "^image-project"; then
+    echo "Error: Please execute this file in the 'image-project' directory" 1>&2
+    exit 1
+fi
+
+echo "export CLASSPATH=\":$PWD/lib/flanagan.jar:$PWD/lib/stdlib.jar:\"" > .path
+# now execute in your commandline "source .path"
