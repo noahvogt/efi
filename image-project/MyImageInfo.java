@@ -6,36 +6,35 @@ import javax.imageio.ImageIO;
 public class MyImageInfo{
     public static void main(String args[]) throws IOException{
         BufferedImage image_on_disk = null;
-        //         File fin = new File("Images/Computer3.png"),
-        //         fout = new File("Images/Computer3.jpg"); // input/output file paths
-        File fin = new File("Images/Taj_Mahal3.png"), // input file path
-        fout = new File("Images/Taj_Mahal3.jpg"); // output file path
+        File inputFilePath = new File("img/wojak-wage-cage-comfy-pepe.png"),
+            outputFilePath = new File("img/wojak-wage-cage-comfy-pepe.jpg");
 
-        ImageInfo imageInfo = new ImageInfo(fin);
-        System.out.println("Informationen zum input-File " + fin + ":\n" + imageInfo + "\n");
+        ImageInfo imageInfo = new ImageInfo(inputFilePath);
+        System.out.println("Informationen zum input-File " + inputFilePath +
+                           ":\n" + imageInfo + "\n");
 
-        int width = imageInfo.width;     // width of the image
-        int height = imageInfo.height;   // height of the image
+        int width = imageInfo.width;
+        int height = imageInfo.height;
 
         image_on_disk = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
 
         //read image
         try {
-            image_on_disk = ImageIO.read(fin);
-            System.out.println("Reading " + fin + " complete !");
+            image_on_disk = ImageIO.read(inputFilePath);
+            System.out.println("Reading " + inputFilePath + " complete !");
         } catch(IOException e){
             System.out.println("Error: " + e);
         }
 
         //write image
         try {
-            ImageIO.write(image_on_disk, "jpg", fout);
-            System.out.println("Writing " + fout + " complete !");
+            ImageIO.write(image_on_disk, "jpg", outputFilePath);
+            System.out.println("Writing " + outputFilePath + " complete !");
         } catch(IOException e){
             System.out.println("Error: " + e);
         }
-    }//main() ends here
-}//class ends here
+    }
+}
 
 // BufferedImage bufferedImage;
 // 

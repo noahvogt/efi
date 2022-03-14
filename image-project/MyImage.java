@@ -12,7 +12,7 @@ public class MyImage{
 
         //read image
         try {
-            f = new File("Images/image-processing-taj.png"); //image file path
+            f = new File("img/Taj_Mahal3.png"); //image file path
             image = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
             image = ImageIO.read(f);
             System.out.println("Reading complete.");
@@ -20,11 +20,12 @@ public class MyImage{
             System.out.println("Error: "+e);
         }
 
-        System.out.println("width = " + image.getWidth() + " height = " + image.getHeight());
+        System.out.println("width = " + image.getWidth() + " height = " +
+                           image.getHeight());
 
         //write image
         try {
-            f = new File("Images/Output.jpg");  //output file path
+            f = new File("img/output.jpg");  //output file path
             ImageIO.write(image, "jpg", f);
             System.out.println("Writing complete.");
         } catch(IOException e){
