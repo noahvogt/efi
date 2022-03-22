@@ -6,8 +6,8 @@ import javax.imageio.ImageIO;
 public class MyImageInfo{
     public static void main(String args[]) throws IOException{
         BufferedImage image_on_disk = null;
-        File inputFilePath = new File("img/wojak-wage-cage-comfy-pepe.png"),
-            outputFilePath = new File("img/wojak-wage-cage-comfy-pepe.jpg");
+        File inputFilePath = new File("img/Sample_204_255_20_147.png"),
+            outputFilePath = new File("img/Sample_204_255_20_147.jpg");
 
         ImageInfo imageInfo = new ImageInfo(inputFilePath);
         System.out.println("Informationen zum input-File " + inputFilePath +

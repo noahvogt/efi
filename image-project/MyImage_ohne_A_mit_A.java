@@ -16,7 +16,7 @@ public class MyImage_ohne_A_mit_A {
                outFormat = "";
 
         FileNameSelector fc = new FileNameSelector("img/");
-        //         fc.setPath("img/");
+                 fc.setPath("img/Sample_204_255_20_147.png");
 
         File fin = null, fout = null;            
 
@@ -26,9 +26,10 @@ public class MyImage_ohne_A_mit_A {
             inFileNamePfad = "img/" + inFileName;
             //             System.out.println("inFileNamePfad = " + inFileNamePfad);
 
-            fin = new File(inFileNamePfad); // input file path
+            fin = new File("img/Sample_204_255_20_147.png"); // input file path
 
-            String [] inFileName_Teil = inFileName.split(Pattern.quote(".")); // Ermitteln den Stamm- und die Erweiterung-Teile von inFileName:
+            String [] inFileName_Teil = inFileName.split(Pattern.quote(".")); 
+            // Ermitteln den Stamm- und die Erweiterung-Teile von inFileName:
             // inFileName_Teil[0] = Stammname, inFileName_Teil[1] = Erweiterung (png, jpg, ...)
 
             outFileName = Db.readLine("Geben Sie den Namen des Output-Files" + 
@@ -87,6 +88,22 @@ public class MyImage_ohne_A_mit_A {
         int width =  image_on_disk.getWidth();
         int height =  image_on_disk.getHeight();
 
+        int zahlenwert = image_on_disk.getRGB(0,0);
+        System.out.println("\nZAHLENWERT (0,0): \n" + zahlenwert);
+        int a = (zahlenwert >> 24) & 0xFF;
+        int r = (zahlenwert >> 16) & 0xFF;
+        int g = (zahlenwert >> 8) & 0xFF;
+        int b = zahlenwert & 0xFF;
+        System.out.println("a = " + a + " = " + Integer.toString(a, 2) + 
+                           "\nr = " + r + " = " + Integer.toString(r, 2) + 
+                           "\ng = " + g + " = " + Integer.toString(g, 2) + 
+                           "\nb = " + b + " = " + Integer.toString(b, 2));
+
+        int new_a = 255, new_r = 100, new_g = 150, new_b = 200, new_p = 0;
+
+        new_p = (new_a << 24) | (new_r << 16) | (new_g << 8) | new_b;
+
+
         System.out.println("\n" + "width = " + width + " height = " + height + "\n");
 
         if (image_on_disk.getColorModel().hasAlpha()) {
@@ -124,6 +141,7 @@ public class MyImage_ohne_A_mit_A {
         //******************** Image schreiben ************************
 
         try {
+            image_memory.setRGB(0, 0, new_p);
             ImageIO.write(image_memory, outFormat, fout);
             System.out.println("Writing " + fout + " complete !"); }
         catch(IOException e) {
